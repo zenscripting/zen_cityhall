@@ -7,28 +7,32 @@
  |_|\_\\____/|____/_/    \_\_| \_|  |_____/|______|   \/   |______|______\____/|_|    |_|  |_|______|_| \_|  |_| |_____/ 
                                                                                                                                                                                                                                                  
 https://discord.gg/4STYVS8xTP | @Kuban
-Renaming Any Files. = Script Breaking
 ]]--
-fx_version 'cerulean'
-game 'gta5'
-author 'KubanScripts'
-description 'Delivery System'
-version '1.0.0'
-lua54 'yes'
-server_script 'server/main.lua'
-client_script 'client/main.lua'
+fx_version "cerulean"
+game "gta5"
+author "KubanScripts"
+description "Cityhall"
+version "1.0.0"
+lua54 "yes"
 
 shared_scripts {
+    'config.lua',
     '@ox_lib/init.lua',
-    'config.lua'
 }
 
-escrow_ignore {
-    'config.lua',
-    'server/main.lua' 
-    }
+client_scripts {
+    'modules/cityhall/client.lua',
+    'modules/interactions/target.lua',
+    'modules/interactions/drawmarker.lua',
+}
+
+server_scripts {
+    '@oxmysql/lib/MySQL.lua',
+    'modules/cityhall/server.lua',
+}
 
 dependencies {
-    'qb-core',
-    'ox_lib'
+    'ox_lib',
+    'oxmysql',
+    '/server:4500',
 }
