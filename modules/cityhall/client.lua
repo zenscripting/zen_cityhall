@@ -8,6 +8,22 @@ elseif Framework == 'esx' then
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 end
 
+local function createBlip()
+    if Config.CityHall.Blip.Enabled then
+        local blip = AddBlipForCoord(Config.CityHall.Pos)
+
+        SetBlipSprite(blip, Config.CityHall.Blip.Sprite)
+        SetBlipDisplay(blip, 4)
+        SetBlipScale(blip, Config.CityHall.Blip.Scale)
+        SetBlipColour(blip, Config.CityHall.Blip.Color)
+        SetBlipAsShortRange(blip, true)
+
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(Config.CityHall.Blip.Label)
+        EndTextCommandSetBlipName(blip)
+    end
+end
+
 local function openCityHallMenu()
     local options = {
         {
@@ -182,4 +198,8 @@ end)
 
 RegisterNetEvent('cityhall:showLawDetail', function(law)
     showLawDetail(law)
+end)
+
+CreateThread(function()
+    createBlip()
 end)
