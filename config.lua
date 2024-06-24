@@ -20,6 +20,13 @@ Config.CityHall = {
         PedModel = 'a_m_y_business_01', -- https://docs.fivem.net/docs/game-references/ped-models/
         PedPos = vector3(-264.67, -964.84, 30.22),
         PedHeading = 204.07
+    },
+    Blip = {
+        Enabled = true,
+        Sprite = 408, -- Blip sprite ID
+        Color = 0, -- Blip color ID
+        Scale = 1.0, -- Blip scale
+        Label = "City Hall" -- Blip label
     }
 }
 Config.TextUI = '[~g~E~w~] City Hall'
